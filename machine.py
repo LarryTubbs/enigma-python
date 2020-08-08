@@ -178,11 +178,9 @@ class Machine():
 
     def evaluateMessage(self, msg, blockCount=0):
         """
-        evaluateMessage allows you to have the machine evaluate an entire message string at once.  For example,
+        evaluateMessage emulates an enigma machine operator encoding an entire message.  For example,
 
         >>> m3 = Machine("M3", "B", "III", "II", "I", [("A", "B"), ("C", "D")])
-        >>> print(m3)
-        M3: I(A) -> II(A) -> III(A)
         >>> m3.evaluateMessage("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 4)
         'PIXW HLIF PVWH EDGC YIUY YXFB SFXW POBL ERUR HDZJ CTNK GZBF BIHF GOSG IYWR MEEZ HQAZ WRKY ZJBV WFDA TOHG EURN NYPX CADE DTHB DB'
         """
