@@ -1,4 +1,19 @@
-"""main entry point for the engima module."""
+"""
+Contains global metadata used by the entire module:
+
+plaintext = the characters supported by the M3 and M4 engima machines.  The "." is included only
+            to allow the internal math to work more smoothly.  That character is ignored here and
+            in the wiring maps.
+
+rotors - the wiring map for all the supported rotors.  These match the rotors used on the M3 and 
+         M4 German naval enigma machines.
+
+knockpoints - where the notches are located on the rotors.  The notches allow the rotors other than
+              the right most rotor to turn.  Again, this set of data matches the notch points on the
+              rotors supplied with the M3 and M4 enigma machines.
+
+reflectors - the 4 different reflectors used on the M3 and M4 enigma machines.
+"""
 
 plaintext = '.ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 

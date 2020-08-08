@@ -1,6 +1,11 @@
 import enigma
 
 class Plugboard():
+    """
+    Implements the plugboard of the enigma machine.  It can be created with a list of tuples containing
+    pairs of letters.  No letter can be used more than once, only the 26 alpha characters are supported, 
+    and a character can not be mapped to itself.
+    """
     def __init__(self, pairs):
         self.wiring = "."
 

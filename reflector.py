@@ -1,7 +1,11 @@
 import enigma
 
 class Reflector:
-    """Defines the rotor in use by the engigma machine"""
+    """
+    Defines the reflector in use by the engigma machine.  The name you pass into the constructor
+    is looked up in the relector dictionary in the enigma module.  You can also create a custom
+    reflector by passing in your own wiring.
+    """
 
     def __init__(self, name, wiring=None):
         self.name = name
