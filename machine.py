@@ -183,6 +183,9 @@ class Machine():
         >>> m3 = Machine("M3", "B", "III", "II", "I", [("A", "B"), ("C", "D")])
         >>> m3.evaluateMessage("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 4)
         'PIXW HLIF PVWH EDGC YIUY YXFB SFXW POBL ERUR HDZJ CTNK GZBF BIHF GOSG IYWR MEEZ HQAZ WRKY ZJBV WFDA TOHG EURN NYPX CADE DTHB DB'
+        >>> m3 = Machine("M3", "B", "III", "II", "I", [("A", "B"), ("C", "D")])
+        >>> m3.evaluateMessage('PIXW HLIF PVWH EDGC YIUY YXFB SFXW POBL ERUR HDZJ CTNK GZBF BIHF GOSG IYWR MEEZ HQAZ WRKY ZJBV WFDA TOHG EURN NYPX CADE DTHB DB')
+        'LOREMIPSUMDOLORSITAMETCONSECTETURADIPISCINGELITSEDDOEIUSMODTEMPORINCIDIDUNTUTLABOREETDOLOREMAGNAALIQUA'
         """
         
         cypherText = ""
