@@ -27,13 +27,35 @@ class Machine():
     'T'
     >>> m3.evaluate("y")
     'G'
+
+    >>> m4 = Machine("M4", "b_thin", "III", "II", "I", [("A", "B"), ("C", "D")], "g")
+    >>> m4.evaluate("M")
+    'D'
+    >>> m4.evaluate("I")
+    'S'
+    >>> m4.evaluate("K")
+    'S'
+    >>> m4.evaluate("E")
+    'H'
+    >>> m4.evaluate("L")
+    'W'
+    >>> m4.evaluate("A")
+    'S'
+    >>> m4.evaluate("R")
+    'A'
+    >>> m4.evaluate("R")
+    'O'
+    >>> m4.evaluate("Y")
+    'D'
     """
     def __init__(self, type, reflector, r, m, l, pb=None, z=None, rSetting=1, mSetting=1, lSetting=1, zSetting=1, rPosition=1, mPosition=1, lPosition=1, zPosition=1):
         """
         To create an enigma machine, you must supply its minimum components.  Required parameters are:
         
             type - either 'M3' or 'M4'. For M4 machines, a z rotor is also required
-            reflector - the reflector type for the machine you want to create, matching a key in the enigma.reflectors dictionary
+            reflector - the reflector type for the machine you want to create, matching a key in the enigma.reflectors dictionary.
+                        To be historically accurate, you should use the "*_thin" variants with the M4 machine.  They had to create 
+                        thinner reflectors to make space for the 4th rotor.  The code will allow any reflector with any machine.
             r - the type of rotor you want in the right position in the stack, matching a key value in the enigma.rotors dictionary
             m - the same for the middle rotor
             l - and the left rotor
@@ -47,7 +69,7 @@ class Machine():
 
         Optional parameters allow you to further configue the inital setup of the machine.  They are:
 
-            pg - A list of tuples listing the pairs of letters jumped by the plugboard.  Each letter can only be jumped once, and you
+            pb - A list of tuples listing the pairs of letters jumped by the plugboard.  Each letter can only be jumped once, and you
                  can't jump a leter to itself.
 
         Ring settings:
@@ -114,6 +136,9 @@ class Machine():
         return rtn        
 
     def evaluate(self, inputLetter):
+        """
+        emulates handling a keypress on the enigma machine
+        """
         # rotate the rotors
         self.rotateRotors()
 
@@ -177,6 +202,10 @@ class Machine():
 
 
     def rotateRotors(self):
+        """
+        emulates the rotation of the rotors when a key is pressed on the enigma machine.  This should only be called internally
+        by the class when the evaluate() method is invoked.
+        """
         # if middle rotor is on a notch, rotate all three notched rotors
         if (self.m.onNotch() is True):
             self.l.rotateUp()

@@ -23,6 +23,8 @@ knockpoints["V"] = (26, 26)    # Z - one knockpoint (R V)
 knockpoints["VI"] = (26, 13)   # Z/M - two knockpoints (R VI)
 knockpoints["VII"] = (26, 13)  # Z/M - two knockpoints (R VII)
 knockpoints["VIII"] = (26, 13) # Z/M - two knockpoints (R VIII)
+knockpoints["b"] = (0, 0)      # no notch on beta rotor
+knockpoints["g"] = (0, 0)      # no notch on gamma rotor
 
 reflectors = {}
 reflectors["B"] = ".YRUHQSLDPXNGOKMIEBFZCWVJAT"      # M3 B
