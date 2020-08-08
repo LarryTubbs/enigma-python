@@ -28,11 +28,42 @@ class Machine():
     >>> m3.evaluate("y")
     'G'
     """
-    def __init__(self, type, reflector, r, m, l, pb, z=None, rSetting=1, mSetting=1, lSetting=1, zSetting=None, rPosition=1, mPosition=1, lPosition=1, zPosition=1):
+    def __init__(self, type, reflector, r, m, l, pb=None, z=None, rSetting=1, mSetting=1, lSetting=1, zSetting=1, rPosition=1, mPosition=1, lPosition=1, zPosition=1):
+        """
+        To create an enigma machine, you must supply its minimum components.  Required parameters are:
         
+            type - either 'M3' or 'M4'. For M4 machines, a z rotor is also required
+            reflector - the reflector type for the machine you want to create, matching a key in the enigma.reflectors dictionary
+            r - the type of rotor you want in the right position in the stack, matching a key value in the enigma.rotors dictionary
+            m - the same for the middle rotor
+            l - and the left rotor
+            
+        If you are creating an "M4 machine, you must also provide:
+
+            z - the type of z-rotor you want in the rotor stack.  There are only two rotors that are valid z rotors, "b" and "g", the
+                beta rotors.  The library will accept any rotor matching a key value in the engima.rotors dictionary however and the 
+                machine function as expected.  Rotors in the z or beta position do not rotate however, as per the design of the M4 
+                Enigma machine.
+
+        Optional parameters allow you to further configue the inital setup of the machine.  They are:
+
+            pg - A list of tuples listing the pairs of letters jumped by the plugboard.  Each letter can only be jumped once, and you
+                 can't jump a leter to itself.
+
+        Ring settings:
+
+            rSetting, lSetting, mSetting, zSetting - these default to 1 (A), but can be setup to any value from 1-26 (A-Z)
+
+        Inital rotor positions:
+
+            rPosition, lPosition, mPosition, zPosition - these also default to 1 (A), but can also be setup to any value from 1-26 (a-Z)
+        
+        """
         self.type = type
-        # TODO: Implement validation for machine to ensure inputs meet requirements
-        #   if M4, must include a z rotor
+        # Implement validation for machine to ensure inputs meet requirements
+        # if M4, must include a z rotor
+        if type == "M4" and z is None:
+            raise ValueError("M4 Enigma machines requires a z rotor.")
 
         self.reflector = Reflector(reflector)
         self.r = Rotor(r, rSetting, rPosition)
