@@ -81,7 +81,7 @@ class Machine():
             rPosition, lPosition, mPosition, zPosition - these also default to 1 (A), but can also be setup to any value from 1-26 (a-Z)
         
         M3 machines where shipped with Rotors I-V typically.  The M4 models improved that to rotors I-VIII for the main three rotors,
-        plus the extra 4th "greek" rotor, beta or gamma.  The code will allow you to use multiples of the same rotor in any position, 
+        plus the extra 4th "greek" rotors, beta and gamma.  The code will allow you to use multiples of the same rotor in any position, 
         but typically each machine was equipped with a box containing one of each possible rotor.
         """
         self.type = type
