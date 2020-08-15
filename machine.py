@@ -1,7 +1,13 @@
-import enigma
-from rotor import Rotor
-from reflector import Reflector
-from plugboard import Plugboard
+if __name__ == "enigma.machine":
+    import enigma.globe as globe
+    from enigma.rotor import Rotor
+    from enigma.reflector import Reflector
+    from enigma.plugboard import Plugboard
+else:
+    import globe
+    from rotor import Rotor
+    from reflector import Reflector
+    from plugboard import Plugboard
 
 class Machine():
     """
@@ -27,7 +33,6 @@ class Machine():
     'T'
     >>> m3.evaluate("y")
     'G'
-
     >>> m4 = Machine("M4", "b_thin", "III", "II", "I", [("A", "B"), ("C", "D")], "g")
     >>> m4.evaluate("M")
     'D'
@@ -106,10 +111,10 @@ class Machine():
     def __str__(self):
         rtn = f"{self.type}: "
         if self.z is not None:
-            rtn += f"{self.z.name}({enigma.plaintext[self.z.position]}) -> "
-        rtn += f"{self.l.name}({enigma.plaintext[self.l.position]}) -> "
-        rtn += f"{self.m.name}({enigma.plaintext[self.m.position]}) -> "
-        rtn += f"{self.r.name}({enigma.plaintext[self.r.position]})"
+            rtn += f"{self.z.name}({globe.plaintext[self.z.position]}) -> "
+        rtn += f"{self.l.name}({globe.plaintext[self.l.position]}) -> "
+        rtn += f"{self.m.name}({globe.plaintext[self.m.position]}) -> "
+        rtn += f"{self.r.name}({globe.plaintext[self.r.position]})"
         return rtn
 
     def __repr__(self):
@@ -194,7 +199,7 @@ class Machine():
         cypherText = ""
         charCount = 0
         for c in msg:
-            if c.upper() in enigma.plaintext[1:]:
+            if c.upper() in globe.plaintext[1:]:
                 if blockCount > 0 and charCount > 0 and charCount % blockCount == 0:
                     cypherText += " "
                 try:
@@ -226,3 +231,4 @@ class Machine():
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
+    

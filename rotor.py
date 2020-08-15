@@ -1,4 +1,7 @@
-import enigma
+if __name__ == "enigma.rotor":
+    import enigma.globe as globe
+else:
+    import globe
 
 class Rotor:
     """
@@ -22,11 +25,11 @@ class Rotor:
         self.ringSetting = ringSetting
         self.position = position
         if (wiring is None):
-            self.wiring = enigma.rotors[name]
+            self.wiring = globe.rotors[name]
         else:
             self.wiring = wiring
         if (notches is None):
-            self.notches = enigma.knockpoints[name]
+            self.notches = globe.knockpoints[name]
         else:
             self.notches = notches
 
@@ -75,7 +78,7 @@ class Rotor:
         mappedChar = ""
         outputPos = None
 
-        inputPos = enigma.plaintext.index(inputLetter)
+        inputPos = globe.plaintext.index(inputLetter)
 
         # adjust for position
         adjPos = inputPos + (self.position - 1)
@@ -87,9 +90,9 @@ class Rotor:
 
         if (reverse is False):
             mappedChar = self.wiring[adjPos]
-            outputPos = enigma.plaintext.index(mappedChar)
+            outputPos = globe.plaintext.index(mappedChar)
         else:
-            mappedChar = enigma.plaintext[adjPos]
+            mappedChar = globe.plaintext[adjPos]
             outputPos = self.wiring.index(mappedChar)
 
         # readjust for Ring Setting
@@ -100,4 +103,4 @@ class Rotor:
         outputPos = outputPos - (self.position - 1)
         outputPos = self.safetyPos(outputPos)
 
-        return enigma.plaintext[outputPos]
+        return globe.plaintext[outputPos]

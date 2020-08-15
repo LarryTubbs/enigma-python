@@ -1,4 +1,7 @@
-import enigma
+if __name__ == "enigma.reflector":
+    import enigma.globe as globe
+else:
+    import globe
 
 class Reflector:
     """
@@ -11,10 +14,10 @@ class Reflector:
         self.name = name
         
         if (wiring is None):
-            self.wiring = enigma.reflectors[name]
+            self.wiring = globe.reflectors[name]
         else:
             self.wiring = wiring
         
     def mapLetter(self, inputLetter):
-        inputPos = enigma.plaintext.index(inputLetter)
+        inputPos = globe.plaintext.index(inputLetter)
         return self.wiring[inputPos]

@@ -1,4 +1,8 @@
-import enigma
+if __name__ == "enigma.plugboard":
+    import enigma.globe as globe
+else:
+    import globe
+
 
 class Plugboard():
     """
@@ -16,7 +20,7 @@ class Plugboard():
                     raise ValueError("You can only map pairs of letters into the plugboard")
 
                 # each character must be valid
-                if pair[0].upper() not in enigma.plaintext[1:] or pair[1].upper() not in enigma.plaintext[1:]:
+                if pair[0].upper() not in globe.plaintext[1:] or pair[1].upper() not in globe.plaintext[1:]:
                     raise ValueError("Only alpha characters can be mapped into the plugboard")
 
                 # characters can't already be in the wiring
